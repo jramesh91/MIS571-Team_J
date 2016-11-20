@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_assign"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+    <!--tools:context="application.snap.assign"-->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/approve_title"
+            android:id="@+id/Approve_title"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:layout_marginTop="15dp">
+
+        </ScrollView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="32dp">
+
+            <TextView
+                android:text="@string/driver_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/driver_title"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginLeft="70dp"
+                android:gravity="center" />
+
+            <TextView
+                android:text="@string/assign_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/assign_title"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="65dp"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckedTextView
+                android:text="@string/driver3_checkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/driver1_checkout"
+                android:checkMark="@android:drawable/btn_radio"
+                android:checkMarkTint="@android:color/black"
+                android:gravity="center"
+                android:layout_marginLeft="70dp"
+                android:layout_marginRight="70dp"
+                android:focusable="true"
+                android:clickable="true"/>
+
+            <CheckedTextView
+                android:text="@string/driver3_checkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/driver2_checkout"
+                android:checkMark="@android:drawable/btn_radio"
+                android:checkMarkTint="@android:color/black"
+                android:layout_marginLeft="70dp"
+                android:layout_marginRight="70dp"
+                android:gravity="center"
+                android:focusable="true"
+                android:clickable="true"/>
+
+            <CheckedTextView
+                android:text="@string/driver3_checkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/driver3_checkout"
+                android:checkMark="@android:drawable/btn_radio"
+                android:checkMarkTint="@android:color/black"
+                android:layout_marginLeft="70dp"
+                android:layout_marginRight="70dp"
+                android:gravity="center"
+                android:focusable="true"
+                android:clickable="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:layout_weight="0.40">
+
+            <Button
+                android:text="@string/goback_btn"
+                android:layout_width="99dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/goback_btn"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="50dp"
+                android:gravity="center"
+                android:textAllCaps="false"/>
+
+            <Button
+                android:text="@string/confirm_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button3"
+                android:layout_weight="1"
+                android:layout_marginLeft="70dp"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="30dp"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
