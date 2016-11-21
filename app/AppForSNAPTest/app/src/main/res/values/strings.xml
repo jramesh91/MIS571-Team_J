@@ -22,6 +22,10 @@
     <string name="gopending">Pending Requests</string>
     <string name="beapproved">Approved Requests</string>
     <string name="berejected">Rejected Requests</string>
+    <string name="reject_reason">Invalid Address</string>
+    <string name="request_ID"> Request ID</string>
+    <string name="next_btn"> Next</string>next_btn
+
 
 
 

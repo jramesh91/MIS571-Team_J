@@ -30,7 +30,7 @@ public class DBOperator
         String path = DBConstant.DATABASE_PATH + "/" + DBConstant.DATABASE_FILE;
         File file = new File(path);
         if (file.exists() && !file.isDirectory())
-            Log.d("The path is ",path);
+            Log.d("The pat is ",path);
         db = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READWRITE);
     }
     /*

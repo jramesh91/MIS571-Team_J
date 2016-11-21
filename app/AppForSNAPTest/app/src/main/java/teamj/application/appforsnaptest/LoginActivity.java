@@ -200,12 +200,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             Log.d("Password", password);
 
-            success = SQLCommand.PasswordFetch;
+            success = "Select password from User where user_id ='"+ email + "'";
             Cursor cursor= DBOperator.getInstance().execQuery(success);
-            success = cursor.toString();
+            /*if (cursor.moveToFirst()) {
+                success = cursor.getString(cursor.getColumnIndex("content"));
+            }*/
+            String success1 = cursor.toString();
 
-            Log.d("Success",success);
-            if (success == password) {
+            Log.d("Success",success1);
+            if (success1 == password) {
 
                 //mAuthTask.execute((Void) null);
                 String role = checkUserRole(email);
@@ -216,6 +219,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     Intent intent = new Intent(this, BookingActivity.class);
                     this.startActivity(intent);
                 }
+            }
+            else
+            {
+
+                setContentView(R.layout.activity_login);
+                mPasswordView.setError(getString(R.string.error_invalid_password));
+                //focusView = mPasswordView;
+                //focusView.requestFocus();
             }
         }
     }
