@@ -3,8 +3,11 @@ package teamj.application.appforsnaptest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +34,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import teamj.application.appforsnaptest.constant.DBConstant;
 import teamj.application.appforsnaptest.constant.SQLCommand;
+import teamj.application.appforsnaptest.util.DBOpenHelper;
 import teamj.application.appforsnaptest.util.DBOperator;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -63,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -200,23 +206,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             Log.d("Password", password);
 
-            success = "Select password from User where user_id ='"+ email + "'";
-            Cursor cursor= DBOperator.getInstance().execQuery(success);
-            /*if (cursor.moveToFirst()) {
-                success = cursor.getString(cursor.getColumnIndex("content"));
-            }*/
-            String success1 = cursor.toString();
+            Boolean suc = doesUserExist(email,password);
+            Log.d("The boolean value is",suc.toString());
 
-            Log.d("Success",success1);
-            if (success1 == password) {
+
+
+            if (suc) {
+                Log.d("Inside The IF BLOCK",suc.toString());
 
                 //mAuthTask.execute((Void) null);
-                String role = checkUserRole(email);
+                String role = getUserRole(email,password);
                 if (role.contains("Student")) {
                     Intent intent = new Intent(this, SNAPActivity.class);
                     this.startActivity(intent);
                 } else if (role.contains("Admin")) {
-                    Intent intent = new Intent(this, BookingActivity.class);
+                    Intent intent = new Intent(this, AdminActivity.class);
                     this.startActivity(intent);
                 }
             }
@@ -397,6 +401,34 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+
+
+    }
+    public boolean doesUserExist(String username, String password) {
+        boolean isUser = false;
+        Context context = getBaseContext();
+        String path = DBConstant.DATABASE_PATH + "/" + DBConstant.DATABASE_FILE;
+        DBOpenHelper dbHelp = new DBOpenHelper(context,path,2);
+        SQLiteDatabase db = dbHelp.getReadableDatabase();
+        String[] columns = new String[] { username, password }; // parameters
+        Cursor res = db.rawQuery("SELECT * FROM User WHERE user_id=? AND password=? ", columns);
+        while (res.moveToNext()) { // will go in this loop if there is a row with the given credentials
+            isUser = true;
+        }
+        return isUser;
+    }
+    public String getUserRole(String username, String password) {
+        String userRole = "Student";
+        Context context = getBaseContext();
+        String path = DBConstant.DATABASE_PATH + "/" + DBConstant.DATABASE_FILE;
+        DBOpenHelper dbHelp = new DBOpenHelper(context,path,2);
+        SQLiteDatabase db = dbHelp.getReadableDatabase();
+        String[] columns = new String[] { username, password }; // parameters
+        Cursor res = db.rawQuery("SELECT User_role FROM User WHERE user_id=? AND password=? ", columns);
+        while (res.moveToNext()) { // will go in this loop if there is a row with the given credentials
+            userRole = res.getString(0);
+        }
+        return userRole;
     }
 }
 

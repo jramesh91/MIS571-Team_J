@@ -38,17 +38,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="50dp">
+            android:paddingLeft="50dp"
+            android:weightSum="1">
 
             <Button
-                android:text="@string/berejected"
-                android:layout_width="123dp"
+                android:layout_width="111dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/reject_btn"
                 android:layout_marginTop="10dp"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:layout_marginRight="50dp" />
+                android:layout_marginRight="80dp"
+                android:gravity="left"
+                android:layout_gravity="left"
+                android:text="@string/berejected"
+                android:layout_marginLeft="0dp"
+                android:paddingRight="20dp" />
+
+
         </LinearLayout>
 
         <LinearLayout

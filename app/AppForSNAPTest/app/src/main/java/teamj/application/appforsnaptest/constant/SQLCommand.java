@@ -2,17 +2,20 @@ package teamj.application.appforsnaptest.constant;
 
 import android.util.Log;
 
+import teamj.application.appforsnaptest.LoginActivity;
+
 /**
  * Created by Rakesh on 27-09-2016.
  */
 
 public class SQLCommand {
 public static String user;
+
     SQLCommand()
     {
         Log.d("Email now is",user);
     }
-    public static String PasswordFetch = "Select password from User where user_id ='"+ user + "'";
+    public static String PasswordFetch = "Select password from User where user_id = '"+ user + "'";
     public static String RoleFetch = "Select User_Role from User where user_id ='"+ user + "'";
     //List the call numbers of books with the title ‘Database Management’
     public static String QUERY_2 = "select lbcallnum from libbook where lbtitle like '%Database Management%'";

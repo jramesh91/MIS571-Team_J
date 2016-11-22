@@ -27,6 +27,7 @@
         <activity android:name=".SNAPActivity"></activity>
         <activity android:name=".BookingActivity"></activity>
         <activity android:name=".CancelActivity"></activity>
+        <activity android:name=".AdminActivity"></activity>
     </application>
 
 </manifest>
