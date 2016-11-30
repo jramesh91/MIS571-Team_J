@@ -31,6 +31,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +46,8 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+
+public class LoginActivity extends AppCompatActivity /*implements LoaderCallbacks<Cursor>*/ {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -81,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        populateAutoComplete();
+        //populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -108,14 +111,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
     }
 
-    private void populateAutoComplete() {
+  /*  private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
         }
 
         getLoaderManager().initLoader(0, null, this);
     }
-
+*/
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
@@ -146,7 +149,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                            @NonNull int[] grantResults) {
         if (requestCode == REQUEST_READ_CONTACTS) {
             if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
+                //populateAutoComplete();
             }
         }
     }
@@ -165,6 +168,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
+
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
@@ -199,12 +203,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
+            //showProgress(true);
             //mAuthTask = new UserLoginTask(email, password);
             String success = null;
             SQLCommand.user = email;
 
             Log.d("Password", password);
+
 
             Boolean suc = doesUserExist(email,password);
             Log.d("The boolean value is",suc.toString());
@@ -213,11 +218,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (suc) {
                 Log.d("Inside The IF BLOCK",suc.toString());
-
+//                BookingActivity b = new BookingActivity();
+//                b.getLogin(email);
                 //mAuthTask.execute((Void) null);
                 String role = getUserRole(email,password);
                 if (role.contains("Student")) {
                     Intent intent = new Intent(this, SNAPActivity.class);
+                    intent.putExtra("email", email);
                     this.startActivity(intent);
                 } else if (role.contains("Admin")) {
                     Intent intent = new Intent(this, AdminActivity.class);
@@ -226,20 +233,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
             else
             {
-
-                setContentView(R.layout.activity_login);
-                mPasswordView.setError(getString(R.string.error_invalid_password));
-                //focusView = mPasswordView;
                 //focusView.requestFocus();
+                //Toast.makeText(this, "User does not exist!", Toast.LENGTH_LONG).show();
+                mEmailView.setError("Email or Password Incorrect!");
+                /*focusView = mEmailView;
+                cancel = true;*/
+                /*mLoginFormView.setVisibility(View.VISIBLE);
+                mProgressView.setVisibility(View.GONE);*/
+//                LoginActivity login = new LoginActivity();
+//
+//                setContentView(R.layout.activity_login);
+//                mPasswordView.setError(getString(R.string.error_invalid_password));
+//                //focusView = mPasswordView;
+//                //focusView.requestFocus();
             }
         }
     }
 
-    private String checkUserRole(String email)
-    {
-        String role = SQLCommand.RoleFetch;
-        return role;
-    }
+
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
 
@@ -259,7 +270,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Shows the progress UI and hides the login form.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
+   /* @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
         // for very easy animations. If available, use these APIs to fade-in
@@ -291,8 +302,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
     }
-
-    @Override
+*/
+    /*@Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(this,
                 // Retrieve data rows for the device user's 'profile' contact.
@@ -325,8 +336,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
     }
-
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
+*/
+  /*  private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(LoginActivity.this,
@@ -344,7 +355,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         int ADDRESS = 0;
         int IS_PRIMARY = 1;
-    }
+    }*/
 
     /**
      * Represents an asynchronous login/registration task used to authenticate
@@ -386,7 +397,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
-            showProgress(false);
+            //showProgress(false);
 
             if (success) {
                 finish();
@@ -399,7 +410,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected void onCancelled() {
             mAuthTask = null;
-            showProgress(false);
+            //showProgress(false);
         }
 
 
