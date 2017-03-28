@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    >
+
+    <TextView
+        android:text="Book your SNAP here"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:ems="10"
+        android:textSize="36sp"
+        android:layout_gravity="center_horizontal|center"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold|italic"
+        android:paddingLeft="15dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:id="@+id/Source_ID"
+        android:layout_weight="0.22"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:text="Source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="20dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="20dp"
+            android:shadowColor="#FFF0E68C"
+            android:id="@+id/source_edittext" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_weight="0.17">
+
+        <TextView
+            android:text="ZipCode"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/ZipID"
+            android:layout_weight="0.02"
+            android:paddingTop="15dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="30dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_weight="0.02"
+            android:layout_marginRight="20dp"
+            android:elevation="1dp"
+            android:shadowColor="#FFF0E68C"
+            android:id="@+id/Source_Zip_edittext" />
+    </LinearLayout>
+
+    <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:layout_weight="0.22">
+
+    <TextView
+        android:text="Destination"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/DestinationID"
+        android:layout_weight="0.02"
+        android:paddingTop="15dp"
+        android:textSize="18sp"
+        android:layout_marginLeft="30dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_weight="0.02"
+        android:layout_marginRight="20dp"
+        android:elevation="1dp"
+        android:shadowColor="#FFF0E68C"
+        android:id="@+id/destination_edittext" />
+</LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_weight="0.04">
+
+        <TextView
+            android:text="ZipCode"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/Dest_ZipID"
+            android:layout_weight="0.02"
+            android:paddingTop="15dp"
+            android:textSize="18sp"
+            android:layout_marginLeft="30dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:layout_weight="0.02"
+            android:layout_marginRight="20dp"
+            android:elevation="1dp"
+            android:shadowColor="#FFF0E68C"
+            android:id="@+id/DestinationZip_edittext" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:layout_weight="0.56"
+        android:paddingTop="150dp"
+        android:elevation="1dp"
+        android:contextClickable="true">
+
+        <Button
+            android:text="Book"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.02"
+            android:id="@+id/book_btn" />
+
+        <Button
+            android:text="Cancel"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.02"
+            android:id="@+id/cancel_btn" />
+    </LinearLayout>
+
+</LinearLayout>

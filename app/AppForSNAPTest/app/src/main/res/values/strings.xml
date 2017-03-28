@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">App For SNAP</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">User ID</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="goback_btn">Back</string>
+    <string name="confirm_btn">Confirm</string>
+    <string name="driver3_checkout">Driver 3</string>
+    <string name="assign_title">Assign Driver</string>
+    <string name="driver_title">Available Drivers</string>
+    <string name="approve_title">Approve Request</string>
+    <string name="rejected_title">Reject Request</string>
+    <string name="reason_text">Reason for Rejecting</string>
+    <string name="request">Request</string>
+    <string name="gopending">Pending Requests</string>
+    <string name="beapproved">Approved Requests</string>
+    <string name="berejected">Rejected Requests</string>
+    <string name="reject_reason">Invalid Address</string>
+    <string name="request_ID"> Request ID</string>
+    <string name="next_btn"> Next</string>next_btn
+
+
+
+
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="checkout_btn">Check Out</string>
+    <string name="return_btn">Return</string>
+    <string name="cancel_btn">Cancel Booking</string>
+    <string name="date">Date</string>
+    <string name="bookID">Book ID</string>
+    <string name="studentID">Student ID</string>
+    <string name="go_book_btn">Book</string>
+</resources>
